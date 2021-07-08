@@ -3,3 +3,9 @@
   --secondary-color: rgb(92, 202, 232);
   --tertiary-color: rgb(129, 72, 1);
 }
+
+/* Map width and height are temporary placeholder values--these will need to be responsive to different screen sizes  */
+#map {
+  width: 256px;
+  height: 256px;
+}
