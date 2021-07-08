@@ -19,3 +19,9 @@ var initMap = function () {
     zoom: 8
   });
 }
+
+var response = fetch("https://api.openweathermap.org/data/2.5/weather?lat=46.6081926&lon=-91.8943668&appid=9c79883a461385b3eeba4afb3c485bf7").then(function(response) {
+  response.json().then(function(data) {
+    console.log(data);
+  });
+});
