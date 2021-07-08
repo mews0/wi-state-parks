@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wisconsin State Parks App</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -27,12 +27,20 @@
         <div class="hero-cta">
           <h2>Choose Your Adventure.</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quisquam ea necessitatibus earum praesentium sunt, laudantium ex fuga hic! Deleniti quisquam vel numquam amet tempora aut in, saepe dolores sunt!
+            Wisconsin's state parks are great places to enjoy nature. Select a park from a list of your favorite parks--or find your next favorite park from a list of all parks--to view it on a map and get its current weather.
           </p>
         </div>
 
         <div class="hero-form">
-
+          <h3>Find a Park</h3>
+          <p>Select One</p>
+          <form id="find-a-park">
+            <input type="radio" id="favorite-parks" name="parks">
+            <label for="favorite-parks">Favorite Parks</label><br>
+            <input type="radio" id="all-parks" name="parks">
+            <label for="all-parks">All Parks</label><br>
+            <button type="button">Show List</button>
+          </form>
         </div>
       </section>
 
@@ -50,7 +58,7 @@
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
     <script src="./assets/js/script.js"></script>
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr5HqqqIPs2AHIvhcMIB7FZcPdek0Kj10&callback=initMap"></script>
   </body>
