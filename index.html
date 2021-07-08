@@ -27,6 +27,7 @@
       <!-- 'Get park info' button click triggers modal giving user option to select a Wisconsin State Park from either (a) a list of all parks or (b) a list of favorite parks saved in local storage -->
     
       <!-- App displays map of park (based on geographic coordinates) using Google Maps API -->
+      <div id="map"></div>
     
       <!-- App displays current weather (temperature and conditions) at park (based on geographic coordinates) using OpenWeather API and Font Awesome weather icons  -->
 
@@ -41,5 +42,6 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./assets/js/script.js"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr5HqqqIPs2AHIvhcMIB7FZcPdek0Kj10&callback=initMap"></script>
   </body>
 </html>

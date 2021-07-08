@@ -12,3 +12,10 @@ let parkSelected = {
   currentTemperature: 0,
   currentConditions: ``
 };
+
+var initMap = function () {
+  map = new google.maps.Map(document.getElementById(`map`), {
+    center: { lat: parkSelected.latitude, lng: parkSelected.longitude },
+    zoom: 8
+  });
+}
