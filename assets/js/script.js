@@ -13,6 +13,11 @@ let parkSelected = {
   currentConditions: ``
 };
 
+// temporary placeholder values to test functionality
+parkSelected.latitude = 46.6081926;
+parkSelected.longitude = -91.8943668;
+
+// Google Maps API
 var initMap = function () {
   map = new google.maps.Map(document.getElementById(`map`), {
     center: { lat: parkSelected.latitude, lng: parkSelected.longitude },
@@ -20,7 +25,8 @@ var initMap = function () {
   });
 }
 
-var response = fetch("https://api.openweathermap.org/data/2.5/weather?lat=46.6081926&lon=-91.8943668&appid=9c79883a461385b3eeba4afb3c485bf7").then(function(response) {
+// OpenWeatherMap API
+var response = fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${parkSelected.latitude}&lon=${parkSelected.longitude}&appid=9c79883a461385b3eeba4afb3c485bf7`).then(function(response) {
   response.json().then(function(data) {
     console.log(data);
   });
