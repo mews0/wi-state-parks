@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wisconsin State Parks App</title>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -32,15 +33,15 @@
         </div>
 
         <div class="hero-form">
-          <h3>Find a Park</h3>
-          <p>Select One</p>
-          <form id="find-a-park">
-            <input type="radio" id="favorite-parks" name="parks">
+          <h3 class="find-park">Find a Park</h3>
+          <form id="find-park-type">
+            <input type="radio" id="favorite-parks" name="find-park-type">
             <label for="favorite-parks">Favorite Parks</label><br>
-            <input type="radio" id="all-parks" name="parks">
+            <input type="radio" id="all-parks" name="find-park-type">
             <label for="all-parks">All Parks</label><br>
-            <button type="button">Show List</button>
+            <button type="button" id="show-list">Show List</button>
           </form>
+          <!-- <form id="select-park"> dynamically generated when user clicks 'Show List' button -->
         </div>
       </section>
 
@@ -58,8 +59,9 @@
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
     <script src="./assets/js/script.js"></script>
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr5HqqqIPs2AHIvhcMIB7FZcPdek0Kj10&callback=initMap"></script>
+    <!-- <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr5HqqqIPs2AHIvhcMIB7FZcPdek0Kj10&callback=initMap"></script> -->
   </body>
 </html>
