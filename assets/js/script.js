@@ -80,7 +80,7 @@ let selectPark = function () {
           modal: true,
           buttons: {
             'OK': function () {
-              $(this).dialog('close');
+              $(this).dialog(`close`);
             }
           }
         });
@@ -89,12 +89,11 @@ let selectPark = function () {
   });
 }
 
-
 // Google Maps API
 let getMap = function () {
 
   // Create the script tag, set the appropriate attributes
-  var script = document.createElement('script');
+  var script = document.createElement(`script`);
   script.src = `https://maps.googleapis.com/maps/api/js?key=${api.map}&callback=initMap`;
   script.async = true;
 
@@ -117,6 +116,10 @@ let getWeather = function () {
     response.json().then(function (data) {
       parkSelected.currentTemperature = Math.round(data.main.temp);
       parkSelected.currentConditions = data.weather[0].main;
+      $(`#map`).after(`<section class="weather" id="weather"></section>`);
+      $(`#weather`)
+        .append(`<h3>Current Weather</h3>`)
+        .append(`<p>${parkSelected.currentTemperature}\u00B0, ${parkSelected.currentConditions}</p>`)
     });
   });
 }
