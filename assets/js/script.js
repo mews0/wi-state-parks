@@ -22,6 +22,7 @@ let parkSelected = {
       parkSelected.latitude = wiStateParks.latitude[wiStateParks.name.indexOf(parkSelected.name.replace(` State Park`, ``))];
       parkSelected.longitude = wiStateParks.longitude[wiStateParks.name.indexOf(parkSelected.name.replace(` State Park`, ``))];
       getWeather();
+      getMap();
     });
   }
 };
@@ -88,21 +89,35 @@ let selectPark = function () {
   });
 }
 
+
+// Google Maps API
+let getMap = function () {
+
+  // Create the script tag, set the appropriate attributes
+  var script = document.createElement('script');
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${api.map}&callback=initMap`;
+  script.async = true;
+
+  // Attach your callback function to the `window` object
+  window.initMap = function () {
+    // JS API is loaded and available
+    map = new google.maps.Map(document.getElementById(`map`), {
+      center: { lat: parkSelected.latitude, lng: parkSelected.longitude },
+      zoom: 8
+    });
+  };
+
+  // Append the 'script' element to 'head'
+  document.head.appendChild(script);
+}
+
 // OpenWeatherMap API
 let getWeather = function () {
-  var response = fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${parkSelected.latitude}&lon=${parkSelected.longitude}&appid=879d335d752af296d09ce96639cf9e52&units=imperial`).then(function (response) {
+  var response = fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${parkSelected.latitude}&lon=${parkSelected.longitude}&appid=${api.weather}&units=imperial`).then(function (response) {
     response.json().then(function (data) {
       parkSelected.currentTemperature = Math.round(data.main.temp);
       parkSelected.currentConditions = data.weather[0].main;
     });
-  });
-}
-
-// Google Maps API
-var initMap = function () {
-  map = new google.maps.Map(document.getElementById(`map`), {
-    center: { lat: parkSelected.latitude, lng: parkSelected.longitude },
-    zoom: 8
   });
 }
 
