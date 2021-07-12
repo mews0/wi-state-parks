@@ -39,9 +39,14 @@
             <label for="favorite-parks">Favorite Parks</label><br>
             <input type="radio" id="all-parks" name="find-park-type">
             <label for="all-parks">All Parks</label><br>
-            <button type="button" id="show-list">Show List</button>
           </form>
-          <!-- <form id="select-park"> dynamically generated when user clicks 'Show List' button -->
+
+          <form class="select-park" id="select-park">
+            <label for="select-park-options"></label>
+            <select name="select-park-options" class="select-park-options" id="select-park-options">
+              <option disabled selected value> -- Select a Park -- </option>
+            </select>
+          </form>
         </div>
       </section>
 

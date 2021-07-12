@@ -16,76 +16,53 @@ let parkSelected = {
   currentConditions: ``,
   assignValues: function () {
     // Assign option selected from drop-down list to variable parkSelected.name
-    $(`.select-park-options`).change(function () {
-      parkSelected.name = $(`option`).filter(`:selected`).text();
-      // Assign values to latitude and longitude attributes of parkSelected object
-      parkSelected.latitude = wiStateParks.latitude[wiStateParks.name.indexOf(parkSelected.name.replace(` State Park`, ``))];
-      parkSelected.longitude = wiStateParks.longitude[wiStateParks.name.indexOf(parkSelected.name.replace(` State Park`, ``))];
-      getWeather();
-      getMap();
-    });
+    parkSelected.name = $(`option`).filter(`:selected`).text();
+    // Assign values to latitude and longitude attributes of parkSelected object
+    parkSelected.latitude = wiStateParks.latitude[wiStateParks.name.indexOf(parkSelected.name.replace(` State Park`, ``))];
+    parkSelected.longitude = wiStateParks.longitude[wiStateParks.name.indexOf(parkSelected.name.replace(` State Park`, ``))];
+    getWeather();
+    getMap();
   }
 };
 
 let selectPark = function () {
-  // Display drop-down list of parks selected by user (either favorite or all) when user clicks 'Show List' button
-  $(`#show-list`).click(function () {
-    // Drop-down functions
-    let dropDown = {
-      add: function () {
-        $(`.hero-form`).append(`<form class="select-park" id="select-park">`);
-        $(`#select-park`)
-          .append(`<label for="select-park-options"></label>`)
-          .append(`<select name="select-park-options" class="select-park-options" id="select-park-options">`);
-      },
-      empty: function () {
-        $(`#select-park-options`).empty();
-      },
-      write: function (listSelected) {
-        // Add options to drop-down list
-        $(`#select-park-options`).append(`<option disabled selected value> -- Select an Option --`);
-        for (i = 0; i < listSelected.length; i++) {
-          $(`#select-park-options`).append(`<option value="">${listSelected[i]} State Park</option>`)
-        }
-        parkSelected.assignValues();
+  // Drop-down list functions
+  let dropDown = {
+    empty: function () {
+      $(`#select-park-options`).empty();
+    },
+    write: function (listSelected) {
+      // Add options to drop-down list
+      $(`#select-park-options`).append(`<option disabled selected value> -- Select an Option --`);
+      for (i = 0; i < listSelected.length; i++) {
+        $(`#select-park-options`).append(`<option value="">${listSelected[i]} State Park</option>`)
       }
     }
+  }
 
-    // If 'Favorite Parks' radio button is checked when 'Show List' button is clicked
-    if ($(`#favorite-parks`).is(`:checked`)) {
-      if (favoriteParks === null) {
-        console.log(`You have not saved any parks to favorites!`);
-      } else {
-        if ($(`#select-park-options`).length > 0) {
-          dropDown.empty();
-        } else {
-          dropDown.add();
-        }
-        dropDown.write(favoriteParks);
-      }
-
-      // If 'All Parks' radio button is checked when 'Show List' button is clicked
-    } else if ($(`#all-parks`).is(`:checked`)) {
-      if ($(`#select-park-options`).length > 0) {
-        dropDown.empty();
-      } else {
-        dropDown.add();
-      }
-      dropDown.write(wiStateParks.name);
-
-      // If no radio button is checked when 'Show List' button is clicked
+  // If the user selects 'favorite parks', then display favorite parks in drop-down list
+  $(`#favorite-parks`).focus(function () {
+    console.log(`You selected favorite parks!`);
+    if (favoriteParks === null) {
+      console.log(`You have not saved any parks to favorites!`);
     } else {
-      $(function () {
-        $(`<div>Please select <strong>Favorite</strong> or <strong>All!</strong></div>`).dialog({
-          modal: true,
-          buttons: {
-            'OK': function () {
-              $(this).dialog(`close`);
-            }
-          }
-        });
-      });
+      dropDown.empty();
     }
+    dropDown.write(favoriteParks);
+  });
+
+  // If the user selects 'all parks', then display all parks in drop-down list
+  $(`#all-parks`).focus(function () {
+    console.log(`You selected all parks!`);
+    if ($(`#select-park-options`).length > 0) {
+      dropDown.empty();
+    }
+    dropDown.write(wiStateParks.name);
+  });
+
+  // Assign option selected from drop-down list to variable parkSelected.name
+  $(`.select-park-options`).change(function () {
+    parkSelected.assignValues();
   });
 }
 
@@ -116,6 +93,10 @@ let getWeather = function () {
     response.json().then(function (data) {
       parkSelected.currentTemperature = Math.round(data.main.temp);
       parkSelected.currentConditions = data.weather[0].main;
+
+      // This removes the 'Current Weather' section so that multiple sections are not displayed when the user changes parks
+      $(`.weather`).remove();
+
       $(`#map`).after(`<section class="weather" id="weather"></section>`);
       $(`#weather`)
         .append(`<h3>Current Weather</h3>`)
