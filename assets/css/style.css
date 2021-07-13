@@ -9,3 +9,33 @@
   width: 256px;
   height: 256px;
 }
+
+.hero {
+  background-image: url('https://i2.wp.com/travelartsy.com/wp-content/uploads/2018/08/wisconsin-state-parks.jpg?fit=2000%2C942&ssl=1');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  color:blanchedalmond;
+}
+
+.map {
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-cta h2 {
+  font-size: 100px;
+  
+}
+
+.hero-cta p {
+  font-size: 30px;
+  color: aquamarine;
+}
+
+.find-park {
+  font-size: 50px;
+}
