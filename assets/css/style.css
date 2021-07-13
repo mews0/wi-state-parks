@@ -12,6 +12,10 @@
   text-align: center;
 }
 
+#weather {
+  text-align: center;
+}
+
 .hero {
   background-image: url('https://i2.wp.com/travelartsy.com/wp-content/uploads/2018/08/wisconsin-state-parks.jpg?fit=2000%2C942&ssl=1');
   background-size: cover;
