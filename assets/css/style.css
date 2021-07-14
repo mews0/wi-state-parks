@@ -8,12 +8,11 @@
 #map {
   width: 100%;
   height: 300px;
-  justify-content: center;
-  text-align: center;
 }
 
 #weather {
   text-align: center;
+  font-size: x-large;
 }
 
 .hero {
@@ -30,18 +29,23 @@
 
 .hero-cta h2 {
   font-size: 100px;
-  text-decoration: underline;
   
 }
 
 .hero-cta p {
   font-size: 30px;
-  color:firebrick;
   font-weight: bold;
+  padding: 0px 250px 0px 250px;
+  
 }
 
 .find-park {
   font-size: 40px;
-
   
+}
+
+@media screen and (max-width: 768px) {
+  .hero-cta p {
+    padding: 30px 15px;
+  }
 }
