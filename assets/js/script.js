@@ -75,7 +75,7 @@ let getMap = function () {
     // JS API is loaded and available
     map = new google.maps.Map(document.getElementById(`map`), {
       center: { lat: parkSelected.latitude, lng: parkSelected.longitude },
-      zoom: 8
+      zoom: 14
     });
   };
 
