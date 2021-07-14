@@ -49,3 +49,14 @@
     padding: 30px 15px;
   }
 }
+
+@media screen and (max-width: 575px) {
+  .hero-cta p {
+    padding: 50px;
+  }
+
+  .hero-cta h2 {
+   font-size: 75px;
+  }
+
+}
