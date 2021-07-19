@@ -4,7 +4,10 @@
   --tertiary-color: rgb(129, 72, 1);
 }
 
-/* Map width and height are temporary placeholder values--these will need to be responsive to different screen sizes  */
+body {
+  font-family: sans-serif;
+}
+
 #map {
   width: 100%;
   height: 300px;
@@ -26,23 +29,29 @@
   color:blanchedalmond;
 }
 
-
-.hero-cta h2 {
+.hero-cta h1 {
   font-size: 100px;
-  
 }
 
 .hero-cta p {
   font-size: 30px;
   font-weight: bold;
   padding: 0px 250px 0px 250px;
-  
 }
 
 .find-park {
   font-size: 40px;
-  
 }
+
+.save-to-favorites button {
+  background-color: var(--primary-color);
+  color: blanchedalmond;
+}
+
+.save-to-favorites button:active {
+  background-color: var(--tertiary-color);
+}
+
 
 @media screen and (max-width: 768px) {
   .hero-cta p {
@@ -55,8 +64,7 @@
     padding: 50px;
   }
 
-  .hero-cta h2 {
-   font-size: 75px;
+  .hero-cta h1 {
+   font-size: 60px;
   }
-
 }

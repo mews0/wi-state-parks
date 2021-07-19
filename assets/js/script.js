@@ -5,7 +5,6 @@ const wiStateParks = {
   longitude: [-91.8943668, -88.8653492, -90.353939, -90.6759153, -88.4366664, -89.8464633, -91.1635694, -90.0057906, -87.9000013, -90.6461571, -89.7367435, -89.6114006, -89.7335565, -90.1418617, -89.4421113, -88.2242184, -87.8058597, -89.2159337, -88.0334795, -88.2932853, -92.64637, -92.7362971, -87.7213427, -89.2365582, -91.3130329, -87.8977064, -88.1256036, -91.7530881, -90.3215746, -89.8204759, -89.932341, -91.0191989, -89.6364212, -86.9941053, -92.1207697, -87.2387953, -91.4762548, -87.427262, -89.6904097, -89.8148347, -86.8596227, -89.8041208, -92.4229218, -90.0505211, -87.1851752, -90.5763642, -92.6898691, -91.1162288, -89.9878712]
 };
 
-// let favoriteParks = [`Peninsula`, `Harrington Beach`, `Kohler-Andrae`, `Rock Island`];
 let favoriteParks = JSON.parse(localStorage.getItem(`favoriteParks`));
 
 let parkSelected = {
@@ -35,7 +34,11 @@ let selectPark = function () {
       // Add options to drop-down list
       $(`#select-park-options`).append(`<option disabled selected value> -- Select a Park -- </option>`);
       for (i = 0; i < listSelected.length; i++) {
-        $(`#select-park-options`).append(`<option value="">${listSelected[i]} State Park</option>`)
+        if (listSelected === favoriteParks) {
+          $(`#select-park-options`).append(`<option value="">${listSelected[i]}</option>`);
+        } else {
+          $(`#select-park-options`).append(`<option value="">${listSelected[i]} State Park</option>`);
+        }
       }
     }
   }
@@ -95,7 +98,7 @@ let getWeather = function () {
 
       $(`#map`).after(`<section class="weather" id="weather"></section>`);
       $(`#weather`)
-        .append(`<h3>Current Weather</h3>`)
+        .append(`<h2>Current Weather</h2>`)
         .append(`<p>${parkSelected.currentTemperature}\u00B0, ${parkSelected.currentConditions}</p>`)
         saveToFavorites();
     });
