@@ -70,7 +70,7 @@ let getMap = function () {
 
   // Create the script tag, set the appropriate attributes
   var script = document.createElement(`script`);
-  script.src = `https://maps.googleapis.com/maps/api/js?key=${api.map}&callback=initMap`;
+  script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBOeY4aU4J9gnXCjIPo8tXaTdadmBOFimI&callback=initMap`;
   script.async = true;
 
   // Attach your callback function to the `window` object
@@ -88,7 +88,7 @@ let getMap = function () {
 
 // OpenWeatherMap API
 let getWeather = function () {
-  var response = fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${parkSelected.latitude}&lon=${parkSelected.longitude}&appid=${api.weather}&units=imperial`).then(function (response) {
+  var response = fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${parkSelected.latitude}&lon=${parkSelected.longitude}&appid=5c1950b4869caa37999040149765e58f&units=imperial`).then(function (response) {
     response.json().then(function (data) {
       parkSelected.currentTemperature = Math.round(data.main.temp);
       parkSelected.currentConditions = data.weather[0].main;
